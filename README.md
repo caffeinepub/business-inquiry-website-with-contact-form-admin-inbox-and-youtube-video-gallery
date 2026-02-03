@@ -1,2 +1,3 @@
-# business-inquiry-website-with-contact-form-admin-inbox-and-youtube-video-gallery
-Exported from Caffeine project: RTRKidd dirtbike branding + YouTube channel (@RTR.Kidddddd) videos filtered to bikes
+## 
+
+To run app build and run docker image: `docker build -t app . docker run -it --network host app`

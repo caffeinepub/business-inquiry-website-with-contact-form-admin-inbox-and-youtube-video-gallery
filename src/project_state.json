@@ -1,0 +1,269 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 29,
+  "summary": "Full-stack Internet Computer (Motoko + React) application with Internet Identity authentication, role-based admin access control, public pages (Home, Videos, Contact), and an admin inbox UI; includes RTRKidd dirtbike-themed branding across the site and a Videos page that loads videos from the @RTR.Kidddddd YouTube channel and filters to bike-related content, with build/deploy fixes and guardrails applied to restore successful local run and deployment.",
+  "existing_features": [
+    {
+      "id": "IF-1",
+      "title": "Motoko backend canister scaffold with authorization layer",
+      "synonyms": [
+        "backend canister",
+        "motoko backend",
+        "authorization mixin",
+        "access control"
+      ],
+      "description": "Backend canister initialized with an authorization/access-control module (MixinAuthorization + access-control) and main canister entrypoint wiring.",
+      "reqIds": [],
+      "version": 1
+    },
+    {
+      "id": "IF-2",
+      "title": "React frontend app scaffold with routing and site layout",
+      "synonyms": [
+        "frontend scaffold",
+        "SiteLayout",
+        "TopNav",
+        "pages"
+      ],
+      "description": "React/Vite/Tailwind frontend with core layout components (SiteLayout, TopNav) and page structure for Home, Videos, Contact, and Admin areas.",
+      "reqIds": [],
+      "version": 1
+    },
+    {
+      "id": "IF-3",
+      "title": "Internet Identity authentication integration (frontend)",
+      "synonyms": [
+        "II auth",
+        "login/logout",
+        "useInternetIdentity",
+        "useActor"
+      ],
+      "description": "Frontend auth hooks and components to authenticate via Internet Identity and create an authenticated backend actor; includes LoginButton and related auth utilities.",
+      "reqIds": [],
+      "version": 1
+    },
+    {
+      "id": "IF-4",
+      "title": "Admin guard and protected admin inbox page (frontend)",
+      "synonyms": [
+        "AdminGuard",
+        "admin inbox",
+        "protected route"
+      ],
+      "description": "Admin-only UI route protection and an admin inbox page scaffold for managing inbound contact inquiries/messages.",
+      "reqIds": [],
+      "version": 1
+    },
+    {
+      "id": "IF-5",
+      "title": "Contact page with inquiry success UI (frontend)",
+      "synonyms": [
+        "ContactPage",
+        "InquirySuccessPanel"
+      ],
+      "description": "Public contact page UI including a success/confirmation panel component for inquiries.",
+      "reqIds": [],
+      "version": 1
+    },
+    {
+      "id": "IF-6",
+      "title": "Videos page with YouTube helper utilities (frontend)",
+      "synonyms": [
+        "VideosPage",
+        "youtube utils"
+      ],
+      "description": "Public videos page scaffold and helper library for working with YouTube URLs/IDs.",
+      "reqIds": [],
+      "version": 1
+    },
+    {
+      "id": "IF-7",
+      "title": "Build/deploy template for ICP full-stack app",
+      "synonyms": [
+        "build-template",
+        "Dockerfile",
+        "deploy.sh",
+        "icp.yaml",
+        "canister.yaml"
+      ],
+      "description": "Included build template assets for packaging, deploying, and maintaining the full-stack project (workspace configs, scripts, canister configs).",
+      "reqIds": [],
+      "version": 1
+    },
+    {
+      "id": "IF-8",
+      "title": "Generated static branding assets",
+      "synonyms": [
+        "generated images",
+        "hero background",
+        "logo"
+      ],
+      "description": "Generated hero background and logo images placed under frontend/public/assets/generated.",
+      "reqIds": [],
+      "version": 1
+    },
+    {
+      "id": "IF-10",
+      "title": "RTRKidd dirtbike-themed branding applied across public pages and navigation",
+      "synonyms": [
+        "site branding",
+        "theme update",
+        "copy update",
+        "dirtbike look and feel"
+      ],
+      "description": "Updated site-wide visual identity and page copy to reflect RTRKidd branding with a dirtbike-themed aesthetic while remaining consistent with Tailwind + shadcn-ui components.",
+      "reqIds": [
+        "AR-2",
+        "AR-4",
+        "AR-5"
+      ],
+      "version": 1
+    },
+    {
+      "id": "IF-11",
+      "title": "Updated generated logo and hero background assets are rendered by the frontend",
+      "synonyms": [
+        "updated static assets",
+        "hero image",
+        "RTRKidd logo"
+      ],
+      "description": "Frontend now uses the updated generated branding assets (logo + hero background) under frontend/public/assets/generated.",
+      "reqIds": [
+        "AR-6"
+      ],
+      "version": 1
+    },
+    {
+      "id": "IF-12",
+      "title": "Profile setup dialog for authenticated users (frontend)",
+      "synonyms": [
+        "ProfileSetupDialog",
+        "profile onboarding",
+        "initial profile setup"
+      ],
+      "description": "Frontend includes a ProfileSetupDialog component to support post-login user onboarding/profile setup flow (intended to run after Internet Identity authentication).",
+      "reqIds": [],
+      "version": 1
+    },
+    {
+      "id": "IF-13",
+      "title": "Build/deploy pipeline fixed for end-to-end ICP app (frontend+backend)",
+      "synonyms": [
+        "deployment fix",
+        "build fix",
+        "icp deploy",
+        "end-to-end build"
+      ],
+      "description": "Implemented code/configuration updates across backend, frontend, and the ICP build-template to restore successful builds and deployments (frontend build, Motoko canister build, and deployment script/config alignment).",
+      "reqIds": [
+        "AR-1"
+      ],
+      "version": 1
+    },
+    {
+      "id": "IF-14",
+      "title": "Build-time guardrails added to prevent recurring deployment regressions",
+      "synonyms": [
+        "build guardrails",
+        "lint rules",
+        "environment checks",
+        "template hardening"
+      ],
+      "description": "Added/updated guardrails in the build-template and frontend tooling (config/scripts/lint rules) to catch common build/deploy pitfalls earlier and reduce chances of repeating the prior deployment failure.",
+      "reqIds": [
+        "AR-2"
+      ],
+      "version": 1
+    },
+    {
+      "id": "IF-15",
+      "title": "Videos page loads from @RTR.Kidddddd YouTube channel feed and filters to bike-related videos",
+      "synonyms": [
+        "YouTube channel feed",
+        "useYouTubeChannelVideos",
+        "bike video filter",
+        "youtubeChannelFeed"
+      ],
+      "description": "Frontend Videos page fetches videos from the @RTR.Kidddddd channel (via channel feed utilities/hooks) and applies a bike/dirtbike-related filter before rendering.",
+      "reqIds": [
+        "AR-1"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-the-frontend-to-make-admin-troubleshooting-self-serve-when-a-logged-in-user-is-denied-by-adminguard-display-the-user-s-current-principal-as-text-and-an-english-explanation-that-admin-access-is-based-on-internet-identity-principal-not-email",
+      "title": "Update the frontend to make admin troubleshooting self-serve: when a logged-in user is denied by AdminGuard, display the user’s current Principal (as text) and an English explanation that admin access is based on Internet Identity Principal, not email.",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-an-admin-facing-ui-page-to-manage-admins-list-current-admins-allow-entering-a-principal-to-grant-admin-and-allow-revoking-admin-from-listed-principals-with-confirmation",
+      "title": "Add an admin-facing UI page to manage admins: list current admins, allow entering a Principal to grant admin, and allow revoking admin from listed Principals (with confirmation).",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-3",
+      "summary": "Add an admin-facing content editor to update the homepage/info box text (and similar editable copy) without redeploying",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-4",
+      "summary": "Add a backend admin bootstrap capability: if the canister currently has zero admins, allow the authenticated caller to promote themself to admin via a dedicated update method; if at least one admin already exists, the method must reject with an authorization error.",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-5",
+      "summary": "Add backend admin management endpoints that allow an admin to grant and revoke admin role for a specified Principal, and to list current admins (for use by an admin UI).",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "status": "pending"
+    }
+  ],
+  "architectural_notes": [
+    "Frontend uses React + Vite + Tailwind with shadcn-ui component library for UI primitives.",
+    "Authentication is handled via Internet Identity on the frontend with an actor-based client (hooks) to call the Motoko backend.",
+    "Backend includes a reusable authorization/access-control layer (MixinAuthorization + access-control) to support role-based restrictions (e.g., admin-only pages).",
+    "Project includes an ICP build/deployment template (canister.yaml, icp.yaml, deploy script, workspace configs) to standardize builds and deployment.",
+    "Videos content is loaded client-side from the @rtrkidddddd channel feed using dedicated YouTube channel feed utilities/hooks and then filtered using a heuristic bike/dirtbike-related classifier before display.",
+    "Build-template directory now contains a more fully fleshed ICP React (Vite + Tailwind + shadcn-ui) starter, including utility scripts for image resizing/pruning and expanded UI primitives mirroring the app’s component stack.",
+    "YouTube channel handle was corrected by the user to @RTR.Kidddddd (was previously captured as @rtrkidddddd).",
+    "Build-template was hardened/expanded (scripts, configs, deploy tooling, and UI primitives) to better mirror the app stack and reduce deployment/build breakage risk.",
+    "Frontend includes additional lint/build-time guardrails (custom eslint rules and stricter config) to prevent common IC/II integration and query-key pitfalls from breaking builds.",
+    "YouTube channel configuration was normalized into dedicated frontend config (youtube.ts) and related feed utilities for consistent handle/identifier usage.",
+    "Admin access is role-based and requires explicitly assigning an authenticated Internet Identity principal to an admin allowlist; login alone does not grant admin privileges."
+  ],
+  "known_issues": [
+    "User reports they are not recognized as an administrator (admin role/access control not granting expected admin privileges).",
+    "User expects Jcdarling1@icloud.com (typo in chat: .con) to have admin access but is not currently recognized as an administrator."
+  ],
+  "isFixRequest": true,
+  "generatedImages": [
+    {
+      "filename": "frontend/public/assets/generated/hero-bg.dim_1920x1080.png",
+      "description": "Generated hero/background image asset",
+      "targetWidth": 1920,
+      "targetHeight": 1080
+    },
+    {
+      "filename": "frontend/public/assets/generated/logo.dim_512x192.png",
+      "description": "Generated logo image asset",
+      "targetWidth": 512,
+      "targetHeight": 192
+    }
+  ],
+  "projectName": "RTRKidd dirtbike branding + YouTube channel (@RTR.Kidddddd) videos filtered to bikes",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}

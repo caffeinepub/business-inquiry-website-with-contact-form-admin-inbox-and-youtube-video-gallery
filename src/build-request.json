@@ -1,0 +1,100 @@
+{
+  "kind": "build_request",
+  "title": "Fix admin access by enabling admin bootstrap and clearer identity-based admin assignment",
+  "priority": "high",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "text": "Add a backend admin bootstrap capability: if the canister currently has zero admins, allow the authenticated caller to promote themself to admin via a dedicated update method; if at least one admin already exists, the method must reject with an authorization error.",
+      "target": "backend",
+      "source": {
+        "messageIds": [
+          "msg-8",
+          "msg-9"
+        ],
+        "quotes": [
+          "Why am I not a administrator",
+          "Jcdarling1@icloud.con should be"
+        ]
+      },
+      "acceptanceCriteria": [
+        "When there are no admins configured, an authenticated user can call the bootstrap method and becomes an admin immediately.",
+        "When at least one admin exists, calling the bootstrap method fails and does not change admin membership.",
+        "The existing admin checks (e.g., inquiries and feature-box saving) recognize the bootstrapped admin without requiring redeploy."
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "text": "Add backend admin management endpoints that allow an admin to grant and revoke admin role for a specified Principal, and to list current admins (for use by an admin UI).",
+      "target": "backend",
+      "source": {
+        "messageIds": [
+          "msg-8",
+          "msg-9"
+        ],
+        "quotes": [
+          "Why am I not a administrator",
+          "Jcdarling1@icloud.con should be"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Only current admins can grant/revoke admin role for another Principal.",
+        "An admin can list the current admin Principals.",
+        "Granting admin to a Principal takes effect immediately for AdminGuard-protected frontend pages."
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "text": "Update the frontend to make admin troubleshooting self-serve: when a logged-in user is denied by AdminGuard, display the user’s current Principal (as text) and an English explanation that admin access is based on Internet Identity Principal, not email.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-8",
+          "msg-9"
+        ],
+        "quotes": [
+          "Why am I not a administrator",
+          "Jcdarling1@icloud.con should be"
+        ]
+      },
+      "acceptanceCriteria": [
+        "On an admin-only page, a non-admin logged-in user sees an access-denied view that includes their current Principal string.",
+        "The access-denied view uses English user-facing text and explicitly clarifies that admin status is not derived from email.",
+        "The Principal shown matches the caller identity currently used by the app’s actor."
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "text": "Add an admin-facing UI page to manage admins: list current admins, allow entering a Principal to grant admin, and allow revoking admin from listed Principals (with confirmation).",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-8",
+          "msg-9"
+        ],
+        "quotes": [
+          "Why am I not a administrator",
+          "Jcdarling1@icloud.con should be"
+        ]
+      },
+      "acceptanceCriteria": [
+        "The page is protected by the existing admin guard.",
+        "An admin can grant admin to a new Principal and see it reflected in the list without a full page refresh.",
+        "An admin can revoke admin (with a confirmation step) and see it reflected in the list without a full page refresh."
+      ]
+    }
+  ],
+  "constraints": [
+    "Keep all Motoko logic in the single backend actor (backend/main.mo).",
+    "Do not edit files under frontend/src/components/ui or any frontend immutablePaths listed in SYSTEM_CONTEXT.",
+    "Use English for any user-facing text."
+  ],
+  "nonGoals": [
+    "Do not implement third-party authentication or email-based authentication; admin access must remain based on Internet Identity Principal.",
+    "Do not add external databases or services."
+  ],
+  "imageRequirements": {
+    "required": [],
+    "edits": []
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Admin self-serve troubleshooting and admin management UI",
+  "requirements": [
+    {
+      "id": "REQ-3",
+      "summary": "Enhance AdminGuard access-denied UX to show the current Internet Identity Principal and explain that admin access is Principal-based (not email-based).",
+      "acceptanceCriteria": [
+        "On an admin-only page, a non-admin logged-in user sees an access-denied view that includes their current Principal string.",
+        "The access-denied view uses English user-facing text and explicitly clarifies that admin status is not derived from email.",
+        "The Principal shown matches the caller identity currently used by the app’s actor."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/auth/AdminGuard.tsx",
+          "operation": "modify",
+          "description": "Update the access-denied UI to include: (1) the currently authenticated user's Principal string (derived from the active Internet Identity), and (2) English explanatory text clarifying that admin permissions are based on Internet Identity Principal, not email. Use the existing authorization flow (AdminGuard + useInternetIdentity) from the authorization component patterns; verify the component's usage instructions before implementing."
+        }
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "summary": "Add an admin-only page to list admins, grant admin to a Principal, and revoke admin with confirmation, updating the list live without full refresh.",
+      "acceptanceCriteria": [
+        "The page is protected by the existing admin guard.",
+        "An admin can grant admin to a new Principal and see it reflected in the list without a full page refresh.",
+        "An admin can revoke admin (with a confirmation step) and see it reflected in the list without a full page refresh."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/hooks/useQueries.ts",
+          "operation": "modify",
+          "description": "Add React Query hooks/mutations for admin management UI using existing backend capabilities: listAdmins, grantAdminRole, revokeAdminRole. Ensure successful grant/revoke invalidates/refetches the admins list so the UI updates without a full page refresh. This follows authorization component patterns for authenticated actor usage; verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/pages/admin/AdminManageAdminsPage.tsx",
+          "operation": "create",
+          "description": "Create an admin-facing page wrapped in AdminGuard that (1) lists current admin Principals, (2) provides an input to enter a Principal text to grant admin, and (3) allows revoking admin from listed Principals with a confirmation step, updating the list via React Query refetch/invalidation (no full page refresh). Use authorization component patterns (AdminGuard and identity-aware actor usage); verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Register and wire a new admin route for the admin management page (e.g., an /admin/admins route) so it is navigable within the app."
+        },
+        {
+          "path": "frontend/src/pages/admin/AdminInboxPage.tsx",
+          "operation": "modify",
+          "description": "Add in-admin navigation to the new admin management page (e.g., a button/link in the header) so admins can reach the admin management UI from the existing admin inbox."
+        },
+        {
+          "path": "frontend/src/pages/admin/AdminHomeBoxesPage.tsx",
+          "operation": "modify",
+          "description": "Add in-admin navigation to the new admin management page (e.g., a button/link near the page header) so admins can reach the admin management UI from the existing home-box editing page."
+        }
+      ]
+    }
+  ]
+}

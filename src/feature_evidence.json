@@ -1,0 +1,47 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-update-the-frontend-to-make-admin-troubleshooting-self-serve-when-a-logged-in-user-is-denied-by-adminguard-display-the-user-s-current-principal-as-text-and-an-english-explanation-that-admin-access-is-based-on-internet-identity-principal-not-email",
+      "featureTitle": "Update the frontend to make admin troubleshooting self-serve: when a logged-in user is denied by AdminGuard, display the user’s current Principal (as text) and an English explanation that admin access is based on Internet Identity Principal, not email.",
+      "files": [
+        "frontend/src/components/auth/AdminGuard.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-3"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-an-admin-facing-ui-page-to-manage-admins-list-current-admins-allow-entering-a-principal-to-grant-admin-and-allow-revoking-admin-from-listed-principals-with-confirmation",
+      "featureTitle": "Add an admin-facing UI page to manage admins: list current admins, allow entering a Principal to grant admin, and allow revoking admin from listed Principals (with confirmation).",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/hooks/useQueries.ts",
+        "frontend/src/pages/admin/AdminHomeBoxesPage.tsx",
+        "frontend/src/pages/admin/AdminInboxPage.tsx",
+        "frontend/src/pages/admin/AdminManageAdminsPage.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-4"
+      ],
+      "confidence": "high"
+    }
+  ]
+}

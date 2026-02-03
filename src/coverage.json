@@ -1,0 +1,80 @@
+{
+  "kind": "coverage_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-03T23:10:57.921Z",
+  "sources": {
+    "buildRequest": true,
+    "implementationPlan": true
+  },
+  "requirements": {
+    "total": 4,
+    "implemented": 2,
+    "items": [
+      {
+        "id": "REQ-1",
+        "summary": "Add a backend admin bootstrap capability: if the canister currently has zero admins, allow the authenticated caller to promote themself to admin via a dedicated update method; if at least one admin already exists, the method must reject with an authorization error.",
+        "status": "unknown",
+        "plannedFiles": [],
+        "matchedFiles": []
+      },
+      {
+        "id": "REQ-2",
+        "summary": "Add backend admin management endpoints that allow an admin to grant and revoke admin role for a specified Principal, and to list current admins (for use by an admin UI).",
+        "status": "unknown",
+        "plannedFiles": [],
+        "matchedFiles": []
+      },
+      {
+        "id": "REQ-3",
+        "summary": "Update the frontend to make admin troubleshooting self-serve: when a logged-in user is denied by AdminGuard, display the user’s current Principal (as text) and an English explanation that admin access is based on Internet Identity Principal, not email.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/components/auth/AdminGuard.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/components/auth/AdminGuard.tsx"
+        ]
+      },
+      {
+        "id": "REQ-4",
+        "summary": "Add an admin-facing UI page to manage admins: list current admins, allow entering a Principal to grant admin, and allow revoking admin from listed Principals (with confirmation).",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/hooks/useQueries.ts",
+          "frontend/src/pages/admin/AdminManageAdminsPage.tsx",
+          "frontend/src/App.tsx",
+          "frontend/src/pages/admin/AdminInboxPage.tsx",
+          "frontend/src/pages/admin/AdminHomeBoxesPage.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/hooks/useQueries.ts",
+          "frontend/src/pages/admin/AdminManageAdminsPage.tsx",
+          "frontend/src/App.tsx",
+          "frontend/src/pages/admin/AdminInboxPage.tsx",
+          "frontend/src/pages/admin/AdminHomeBoxesPage.tsx"
+        ]
+      }
+    ]
+  },
+  "changedFiles": [
+    "backend/main.mo",
+    "build-request.json",
+    "feature_evidence.json",
+    "frontend-file-summaries.txt",
+    "frontend-implementation-plan.json",
+    "frontend/src/App.tsx",
+    "frontend/src/backend.d.ts",
+    "frontend/src/backend.ts",
+    "frontend/src/components/auth/AdminGuard.tsx",
+    "frontend/src/declarations/backend.did.d.ts",
+    "frontend/src/declarations/backend.did.js",
+    "frontend/src/hooks/useQueries.ts",
+    "frontend/src/pages/admin/AdminHomeBoxesPage.tsx",
+    "frontend/src/pages/admin/AdminInboxPage.tsx",
+    "frontend/src/pages/admin/AdminManageAdminsPage.tsx",
+    "project_state.json",
+    "scratch/component-selection.json",
+    "spec.md",
+    "spec_vs_diff_report.json"
+  ]
+}
